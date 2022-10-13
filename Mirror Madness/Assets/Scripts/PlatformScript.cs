@@ -8,7 +8,8 @@ public class PlatformScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        normal = new Vector2(this.gameObject.transform.forward.x, this.gameObject.transform.forward.y);
+        normal = new Vector2(this.gameObject.transform.up.x, this.gameObject.transform.up.y);
+
     }
 
     // Update is called once per frame
@@ -23,8 +24,11 @@ public class PlatformScript : MonoBehaviour
         {
             print("collided");
             BulletScript bullet = collision.gameObject.GetComponent <BulletScript> ();
+            //print(bullet.velocity.y);
             Vector2 newVel = Vector2.Reflect(bullet.getVelocity(), normal);
             bullet.setVelocity(newVel);
+
+            //print(newVel.y);
         }
     }
 
