@@ -22,6 +22,9 @@ public class ProjectileLauncher : MonoBehaviour
         Vector3 arrowPos = (launchDir * 1) + this.gameObject.transform.position;
         arrow.transform.position = new Vector3(arrowPos.x, arrowPos.y, arrow.transform.position.z);
         //arrow.transform.rotation = Quaternion.LookRotation(launchDir);
+        Vector2 unitVec = new Vector2(0, 1);
+        Vector2 dirVec2 = new Vector2(launchDir.x, launchDir.y);
+        arrow.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(unitVec, dirVec2));
 
         //controls
         if (Input.GetMouseButtonDown(0))
