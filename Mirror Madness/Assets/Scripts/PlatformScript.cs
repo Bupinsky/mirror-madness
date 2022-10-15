@@ -20,7 +20,7 @@ public class PlatformScript : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         //print("collided");
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "Projectile" || collision.gameObject.tag == "Fireball")
         {
             print("collided");
             BulletScript bullet = collision.gameObject.GetComponent <BulletScript> ();
@@ -30,13 +30,8 @@ public class PlatformScript : MonoBehaviour
 
             //print(newVel.y);
         }
-        if (collision.gameObject.tag == "Fireball")
+        if (this.gameObject.tag == "Wooden" && collision.gameObject.tag == "Fireball")
         {
-            print("collided");
-            BulletScript bullet = collision.gameObject.GetComponent<BulletScript>();
-            //print(bullet.velocity.y);
-            Vector2 newVel = Vector2.Reflect(bullet.getVelocity(), normal);
-            bullet.setVelocity(newVel);
             Destroy(this.gameObject);
             //print(newVel.y);
         }

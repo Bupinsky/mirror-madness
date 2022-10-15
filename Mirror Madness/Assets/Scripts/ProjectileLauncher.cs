@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
+    public GameObject player;
     public GameObject arrow;
     public GameObject bulletBlueprint;
     public List<GameObject> bullets;
@@ -16,12 +17,17 @@ public class ProjectileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // so for some reason this code works for the mouse controls but not for placing the arrow position
         Vector3 mousePos = Input.mousePosition;
-        Vector3 launchDir = (mousePos - new Vector3(Screen.width / 2, Screen.height / 2, 0)) - this.gameObject.transform.position;
+        mousePos.z = Camera.main.nearClipPlane;
+        Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
+        Vector3 launchDir = mousePosWorld - this.gameObject.transform.position;
+        launchDir.z = 0;
         launchDir = launchDir.normalized;
-        Vector3 arrowPos = (launchDir * 1) + this.gameObject.transform.position;
+        Vector3 arrowPos = (launchDir * 2) + player.transform.position;
         arrow.transform.position = new Vector3(arrowPos.x, arrowPos.y, arrow.transform.position.z);
-        //arrow.transform.rotation = Quaternion.LookRotation(launchDir);
+
+        // setting up the rotation
         Vector2 unitVec = new Vector2(0, 1);
         Vector2 dirVec2 = new Vector2(launchDir.x, launchDir.y);
         arrow.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(unitVec, dirVec2));

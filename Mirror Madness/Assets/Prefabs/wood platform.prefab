@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2777837970804322152}
   m_Layer: 0
   m_Name: wood platform
-  m_TagString: Untagged
+  m_TagString: Wooden
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
