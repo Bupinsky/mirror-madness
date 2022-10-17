@@ -17,7 +17,7 @@ public class MirrorScript : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //print("collided");
+        // when a projectile hits the mirror, they player wins.  This will eventually be made to bring the player to the next scene.
         if (collision.gameObject.tag == "Projectile" || collision.gameObject.tag == "Fireball")
         {
             print("WINNER!");

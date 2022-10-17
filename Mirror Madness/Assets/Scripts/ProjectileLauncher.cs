@@ -17,13 +17,17 @@ public class ProjectileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // so for some reason this code works for the mouse controls but not for placing the arrow position
+        // convert mouse position to the relative world position of the mouse
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = Camera.main.nearClipPlane;
         Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
+
+        //calculate the direction vector for the bullet trajectory
         Vector3 launchDir = mousePosWorld - this.gameObject.transform.position;
         launchDir.z = 0;
         launchDir = launchDir.normalized;
+
+        // rotating arrow shows the player where the bullets will go when they fire
         Vector3 arrowPos = (launchDir * 2) + player.transform.position;
         arrow.transform.position = new Vector3(arrowPos.x, arrowPos.y, arrow.transform.position.z);
 
@@ -35,6 +39,7 @@ public class ProjectileLauncher : MonoBehaviour
         //controls
         if (Input.GetMouseButtonDown(0))
         {
+            //add bullets to the list of bullets, this will make them easy to manage.
             bullets.Add(Instantiate(bulletBlueprint, new Vector3(arrow.transform.position.x, arrow.transform.position.y, 0), Quaternion.identity));
             bullets[bullets.Count - 1].transform.localScale = new Vector3(1, 1, 1);
             bullets[bullets.Count - 1].GetComponent<BulletScript>().SetVelocity(launchDir.x*10, launchDir.y*10);

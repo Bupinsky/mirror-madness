@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 158002706}
+  - component: {fileID: 158002707}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -154,6 +155,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &158002707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158002705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a78164f288a2934f9c2c1ba3469fa67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &299000486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,6 +1113,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2777837970804322152, guid: 8b6770faa322da24b8deba5f0700d725,
+        type: 3}
+      propertyPath: rotateable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2777837970804322155, guid: 8b6770faa322da24b8deba5f0700d725,
         type: 3}
       propertyPath: m_RootOrder
@@ -1411,6 +1429,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: steel platform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3102101451010377858, guid: b2849ffb3ab59324aa667936c59a9425,
+        type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3102101451010377885, guid: b2849ffb3ab59324aa667936c59a9425,
         type: 3}
       propertyPath: m_RootOrder
@@ -1465,6 +1488,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -135
+      objectReference: {fileID: 0}
+    - target: {fileID: 3102101451010377886, guid: b2849ffb3ab59324aa667936c59a9425,
+        type: 3}
+      propertyPath: rotateable
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2849ffb3ab59324aa667936c59a9425, type: 3}
