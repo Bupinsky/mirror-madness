@@ -29,12 +29,76 @@ public class ProjectileLauncher : MonoBehaviour
         launchDir.z = 0;
         launchDir = launchDir.normalized;
 
+        // locking to 8 directions
+        Vector2 unitVec = new Vector2(0.0f, 1.0f);
+
+        //simpler version I couldnt figure out sorryyyy
+        //float theAngle = (Vector2.SignedAngle(unitVec, launchDir) + 22.5f) % 45;
+        //theAngle *= 45;
+        //launchDir.x = Mathf.Cos(theAngle * Mathf.PI / 180);
+        //launchDir.y = Mathf.Sin(theAngle * Mathf.PI / 180);
+
+
+        print(Vector2.SignedAngle(unitVec, launchDir));
+        //UP
+        if (Vector2.SignedAngle(unitVec, launchDir) < 22.5 && Vector2.SignedAngle(unitVec, launchDir) > -22.5)
+        {
+            launchDir.x = 0;
+            launchDir.y = 1;
+        }
+        //UP RIGHT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < 45+22.5 && Vector2.SignedAngle(unitVec, launchDir) > 45-22.5)
+        {
+            launchDir.x = 1;
+            launchDir.y = 1;
+        }
+        //RIGHT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < 90+22.5 && Vector2.SignedAngle(unitVec, launchDir) > 90-22.5)
+        {
+            launchDir.x = 1;
+            launchDir.y = 0;
+        }
+        //DOWN RIGHT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < 135+22.5 && Vector2.SignedAngle(unitVec, launchDir) > 135-22.5)
+        {
+            launchDir.x = 1;
+            launchDir.y = -1;
+        }
+        // DOWN LEFT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < -135+22.5 && Vector2.SignedAngle(unitVec, launchDir) > -135-22.5)
+        {
+            launchDir.x = -1;
+            launchDir.y = -1;
+        }
+        // LEFT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < -90+22.5 && Vector2.SignedAngle(unitVec, launchDir) > -90-22.5)
+        {
+            launchDir.x = -1;
+            launchDir.y = 0;
+        }
+        // UP LEFT
+        else if (Vector2.SignedAngle(unitVec, launchDir) < -45+22.5 && Vector2.SignedAngle(unitVec, launchDir) > -45-22.5)
+        {
+            launchDir.x = -1;
+            launchDir.y = 1;
+        }
+        else
+        {
+            // DOWN
+            launchDir.x = 0;
+            launchDir.y = -1;
+        }
+        // it was backwards idk lol
+        launchDir.x *= -1;
+        // normalizing again cuz didn't wanna look up 45 degree direction vectors
+        launchDir = launchDir.normalized;
+
         // rotating arrow shows the player where the bullets will go when they fire
         Vector3 arrowPos = (launchDir * 2) + player.transform.position;
         arrow.transform.position = new Vector3(arrowPos.x, arrowPos.y, arrow.transform.position.z);
 
         // setting up the rotation
-        Vector2 unitVec = new Vector2(0, 1);
+        //Vector2 unitVec = new Vector2(0, 1);
         Vector2 dirVec2 = new Vector2(launchDir.x, launchDir.y);
         arrow.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(unitVec, dirVec2));
 
