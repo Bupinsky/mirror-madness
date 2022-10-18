@@ -8,10 +8,12 @@ public class ProjectileLauncher : MonoBehaviour
     public GameObject arrow;
     public GameObject bulletBlueprint;
     public List<GameObject> bullets;
+    public int numBullets;
+    PlayerScript playerScript;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -39,10 +41,27 @@ public class ProjectileLauncher : MonoBehaviour
         //controls
         if (Input.GetMouseButtonDown(0))
         {
-            //add bullets to the list of bullets, this will make them easy to manage.
-            bullets.Add(Instantiate(bulletBlueprint, new Vector3(arrow.transform.position.x, arrow.transform.position.y, 0), Quaternion.identity));
-            bullets[bullets.Count - 1].transform.localScale = new Vector3(1, 1, 1);
-            bullets[bullets.Count - 1].GetComponent<BulletScript>().SetVelocity(launchDir.x*10, launchDir.y*10);
+            // only shoot if the player has bullets and is on the ground
+            if (numBullets > 0 && playerScript.isGrounded)
+            {
+                //add bullets to the list of bullets, this will make them easy to manage.
+                bullets.Add(Instantiate(bulletBlueprint, new Vector3(arrow.transform.position.x, arrow.transform.position.y, 0), Quaternion.identity));
+                bullets[bullets.Count - 1].transform.localScale = new Vector3(1, 1, 1);
+                bullets[bullets.Count - 1].GetComponent<BulletScript>().SetVelocity(launchDir.x * 10, launchDir.y * 10);
+                
+                numBullets -= 1;
+            }
         }
+    }
+
+    void OnGUI()
+    {
+
+        GUI.color = Color.white;
+        GUI.skin.box.fontSize = 24;
+        GUI.skin.box.wordWrap = false;
+
+
+        GUI.Box(new Rect(10, 10, 100, 30), "Shots: " + numBullets);
     }
 }

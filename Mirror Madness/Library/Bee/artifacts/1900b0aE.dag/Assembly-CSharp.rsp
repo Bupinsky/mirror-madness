@@ -359,6 +359,7 @@
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/MirrorScript.cs"
 "Assets/Scripts/PlatformScript.cs"
+"Assets/Scripts/PlayerScript.cs"
 "Assets/Scripts/ProjectileLauncher.cs"
 "Assets/Scripts/QuitButton.cs"
 "Assets/Scripts/StartButton.cs"

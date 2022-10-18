@@ -26,6 +26,8 @@ public class BulletScript : MonoBehaviour
             //Debug.Log("bullet destroyed");
         }
     }
+
+
     public void SetVelocity(float xVel, float yVel)
     {
         velocity = new Vector3(xVel, yVel);

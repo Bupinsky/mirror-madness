@@ -58,11 +58,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\MirrorScript.cs" />
     <Compile Include="Assets\Scripts\PlatformScript.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\QuitButton.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
     <Compile Include="Assets\Scripts\ProjectileLauncher.cs" />
     <Compile Include="Assets\Scripts\BulletScript.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
