@@ -94,7 +94,7 @@ public class ProjectileLauncher : MonoBehaviour
         launchDir = launchDir.normalized;
 
         // rotating arrow shows the player where the bullets will go when they fire
-        Vector3 arrowPos = (launchDir * 2) + player.transform.position;
+        Vector3 arrowPos = (launchDir * 2.2f) + player.transform.position;
         arrow.transform.position = new Vector3(arrowPos.x, arrowPos.y, arrow.transform.position.z);
 
         // setting up the rotation
