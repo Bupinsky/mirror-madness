@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class MirrorScript : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -23,6 +23,7 @@ public class MirrorScript : MonoBehaviour
             print("WINNER!");
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }
