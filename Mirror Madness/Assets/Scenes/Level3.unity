@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 299000486}
   arrow: {fileID: 948332671}
-  bulletBlueprint: {fileID: 3195256842216098575, guid: 8f12b03f34fc22d418b6cb87cabd2f32,
+  bulletBlueprint: {fileID: 547276004927011896, guid: 8f12b03f34fc22d418b6cb87cabd2f32,
     type: 3}
   bullets: []
   numBullets: 1
