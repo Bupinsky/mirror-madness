@@ -111,7 +111,7 @@ public class ProjectileLauncher : MonoBehaviour
                 //add bullets to the list of bullets, this will make them easy to manage.
                 bullets.Add(Instantiate(bulletBlueprint, new Vector3(arrow.transform.position.x, arrow.transform.position.y, 0), Quaternion.identity));
                 bullets[bullets.Count - 1].transform.localScale = new Vector3(1, 1, 1);
-                bullets[bullets.Count - 1].GetComponent<BulletScript>().SetVelocity(launchDir.x * 10, launchDir.y * 10);
+                bullets[bullets.Count - 1].GetComponent<BulletScript>().SetVelocity(launchDir.x, launchDir.y);
                 
                 numBullets -= 1;
             }

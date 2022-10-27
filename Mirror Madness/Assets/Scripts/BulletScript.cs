@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public Vector2 velocity;
+    public int speed;
     float x;
     float y;
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class BulletScript : MonoBehaviour
         y = transform.position.y + Time.deltaTime * velocity.y;
         transform.position = new Vector3(x, y, 0);
 
+
         // destroy out of bounds bullets
         if (!isInBounds())
         {
@@ -30,7 +32,7 @@ public class BulletScript : MonoBehaviour
 
     public void SetVelocity(float xVel, float yVel)
     {
-        velocity = new Vector3(xVel, yVel);
+        velocity = new Vector3(xVel * speed, yVel * speed);
     }
 
     public bool isInBounds()

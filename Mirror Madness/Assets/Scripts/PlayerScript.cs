@@ -8,13 +8,16 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!isInBounds())
+        {
+            Destroy(gameObject);
+            //Debug.Log("bullet destroyed");
+        }
     }
 
     //checking when the player is on the ground by setting a variable when the enter or exit a collider on the ground layer
@@ -24,6 +27,7 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = true;
         }
+        isGrounded = true;
     }
     void OnCollisionExit2D(Collision2D collision)
     {
@@ -31,5 +35,11 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    public bool isInBounds()
+    {
+        if (Mathf.Abs(transform.position.x) > 10 || Mathf.Abs(transform.position.y) > 10) return false;
+        return true;
     }
 }
