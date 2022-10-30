@@ -16,10 +16,14 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // moving the bullet
         x = transform.position.x + Time.deltaTime * velocity.x;
         y = transform.position.y + Time.deltaTime * velocity.y;
         transform.position = new Vector3(x, y, 0);
 
+        // rotating the bullet
+        Vector2 unitVec = new Vector2(0, 1);
+        transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(unitVec, velocity));
 
         // destroy out of bounds bullets
         if (!isInBounds())
@@ -32,7 +36,7 @@ public class BulletScript : MonoBehaviour
 
     public void SetVelocity(float xVel, float yVel)
     {
-        velocity = new Vector3(xVel * speed, yVel * speed);
+        velocity = new Vector2(xVel * speed, yVel * speed);
     }
 
     public bool isInBounds()
