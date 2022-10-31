@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public bool isGrounded;
+    public bool infiniteFlight;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isInBounds())
+        if (!isInBounds() && !infiniteFlight)
         {
             Destroy(gameObject);
             //Debug.Log("bullet destroyed");

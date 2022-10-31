@@ -26,11 +26,11 @@ public class BulletScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(unitVec, velocity));
 
         // destroy out of bounds bullets
-        if (!isInBounds())
-        {
-            Destroy(gameObject);
-            //Debug.Log("bullet destroyed");
-        }
+        //if (!isInBounds())
+        //{
+        //    Destroy(gameObject);
+        //    //Debug.Log("bullet destroyed");
+        //}
     }
 
 
